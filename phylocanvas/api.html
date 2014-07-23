@@ -25,12 +25,13 @@
 			<p class="note">To be expanded in v 1.3.0</p>
 			<dl>
 				<dt>history_collapsed - <i>boolean</i></dt>
-						<dd>Is the history initially in the collapsed state</dd>
-				</dl>
+					<dd>Is the history initially in the collapsed state</dd>
+
+			</dl>
 
 			<h3>Properties</h3>
 				<dl>
-					<dt>.backColour (bool/function, default : false)</dt>
+					<dt>backColour - <i>bool/function (default : false)</i></dt>
 						<dd>
 						Possible values:
 							<ul>
@@ -41,6 +42,64 @@
 								Ideally the returned colour should be an RGBA value</li>
 							</ul>
 						</dd>
+
+					<dt>baseNodeSize - <i>integer</i></dt>
+						<dd>The radius of a leaf tip if no other size is specified</dd>
+
+					<dt>branches - <i>Object/Dictionary</i></dt>
+						<dd>An object containing each branch keyed by it's ID. Internal
+						branches without IDs are given generated Ids prefixed with 'pcn',
+						the root will typically be 'pcn0'</dd>
+
+					<dt>canvas - <i>HTMLCanvasContext</i></dt>
+						<dd>the canvas used to draw the tree</dd>
+
+					<dt>canvasEl - <i>HTMLDivElement</i></dt>
+						<dd>Slight misnoma for legacy reasons... the element that
+						contains PhyloCanvas. Should normally be a block element</dd>
+
+					<dt>contextMenu - <i>PhyloCanvas.ContextMenu</dt>
+						<dd>A reference to the context menu object that belongs to this instance</dd>
+
+					<dt>drawn - <i>boolean</i></dt>
+						<dd>A variable for internal use the records whether
+						the pre-render has run (named for legacy reasons)</dd>
+
+					<dt>lastId - <i>int</i></dt>
+						<dd>The last id returned by the id generator</dd>
+
+					<dt>leaves - <i>PhyloCanvas.Branch[]</i></dt>
+						<dd>An array of every node without children, the tips
+							of the tree </dd>
+
+					<dt>offsetx/offsety - <i>int</i></dt>
+						<dd>The the position of the diagram origin (0,0)
+						relative to the centre of the viewer</dd>
+
+					<dt>origBL - <i>Object</i></dt>
+						<dd>The original branch lengths, populated when a
+							subtree is drawn </dd>
+
+					<dt>origP - <i>Object</i></dt>
+						<dd>The original parent of the new root, populated when a
+							subtree is drawn </dd>
+
+					<dt>pickedUp - <i>boolean</i></dt>
+						<dd>Is the left mouse button being held down over the
+							tree</dd>
+
+					<dt>dragging - <i>boolean</i></dt>
+						<dd>has the tree been "picked up" AND moved?</dd>
+
+					<dt>root - <i>Branch</i></dt>
+						<dd>A reference to the root of the tree</dd>
+
+					<dt>selectedNodes - <i>PhyloCanvas.Branch[]</i></dt>
+						<dd>An array of the selected branches</dd>
+
+					<dt>zoom - <i>double</i></dt>
+						<dd>The current Zoom level</dd>
+
 				</dl>
 
 			<h3>Functions</h3>
