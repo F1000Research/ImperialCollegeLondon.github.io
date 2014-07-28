@@ -46,6 +46,14 @@
 					<dt>baseNodeSize - <i>integer</i></dt>
 						<dd>The radius of a leaf tip if no other size is specified</dd>
 
+					<dt>branchColour - <i>rgba value</i></dt>
+						<dd>The normal colour of the branches </dd>
+
+					<dt>branchScalar - <i>double</i></dt>
+						<dd>a multiplier for the branch length to produce the best
+						possible definition between branch lengths (branchLength * branchScalar =
+						drawnLength) </dd>
+
 					<dt>branches - <i>Object/Dictionary</i></dt>
 						<dd>An object containing each branch keyed by it's ID. Internal
 						branches without IDs are given generated Ids prefixed with 'pcn',
@@ -61,9 +69,29 @@
 					<dt>contextMenu - <i>PhyloCanvas.ContextMenu</i></dt>
 						<dd>A reference to the context menu object that belongs to this instance</dd>
 
+					 <dt>dragging - <i>boolean</i></dt>
+							<dd>has the tree been "picked up" AND moved?</dd>
+
 					<dt>drawn - <i>boolean</i></dt>
 						<dd>A variable for internal use the records whether
 						the pre-render has run (named for legacy reasons)</dd>
+
+					<dt>font - <i>string</i></dt>
+						<dd>The font face to use for tree labels</dd>
+
+					<dt>highlightColour - <i>rgba value</i></dt>
+						<dd>The colour highlighted branches change to</dd>
+
+					<dt>hightlightWidth - <i>int (default : 5)</i></dt>
+						<dd>How much bigger do highlighted nodes/branches get</dd>
+
+					<dt>hoverLabel - <i>boolean</i></dt>
+						<dd>If the labels are turned off, and this is true, show
+						the node label when hovering over the node tip.</dd>
+
+					<dt>internalNodesSelectable - <i>boolean</i></dt>
+						<dd>Can internal nodes be selected, if false, only leaves
+						are selectable</dd>
 
 					<dt>lastId - <i>int</i></dt>
 						<dd>The last id returned by the id generator</dd>
@@ -71,6 +99,14 @@
 					<dt>leaves - <i>PhyloCanvas.Branch[]</i></dt>
 						<dd>An array of every node without children, the tips
 							of the tree </dd>
+
+					<dt>lineWidth - <i>double (default:1.0)</i></dt>
+						<dd>The width of the lines that make up the branches, as
+						well as the outline of the nodes</dd>
+
+					<dt>maxBranchLength - <i>double, read only</i></dt>
+						<dd>The max branchlength from the root of the tree to
+							the furthest tip</dd>
 
 					<dt>offsetx/offsety - <i>int</i></dt>
 						<dd>The the position of the diagram origin (0,0)
@@ -88,11 +124,34 @@
 						<dd>Is the left mouse button being held down over the
 							tree</dd>
 
-					<dt>dragging - <i>boolean</i></dt>
-						<dd>has the tree been "picked up" AND moved?</dd>
+					<dt>rightClickZoon - <i>boolean (default : true)</i></dt>
+						<dd>Enable zooming the tree by dragging with the right mouse button</dd>
+
+					<dt>selectedColour - <i>rgba value</i></dt>
+						<dd>The colour the branch and node change to when selected</dd>
+
+					<dt>selectedNodeSizeIncrease - <i>int (default : 0)</i></dt>
+						<dd>How much bigger do selected nodes get</dd>
+
+					<dt>showBootstrap - <i>boolean (default:false)</i></dt>
+						<dd>Whether or not to show all the bootstrap confidences</dd>
+
+					<dt>showLabels - <i>boolean (default: true)</i></dt>
+						<dd>Whether or not to draw all the leaf labels</dd>
+
+					<dt>textSize - <i>integer</i></dt>
+						<dd>The size of the branch labels (in px)</dd>
+
+					<dt>treetype - <i>string (default : radial)</i></dt>
+						<dd>which branchRenderer to use, supplied renderers are:
+							radial, rectangular, circular, diagonal and hierarchy</dd>
 
 					<dt>root - <i>Branch</i></dt>
 						<dd>A reference to the root of the tree</dd>
+
+					<dt>unselectOnClickAway - <i>boolean (default : true)</i></dt>
+						<dd>Deselect when the user clicks on somewhere on the canvas
+						that isn't the tree</dd>
 
 					<dt>selectedNodes - <i>PhyloCanvas.Branch[]</i></dt>
 						<dd>An array of the selected branches</dd>
@@ -103,44 +162,66 @@
 				</dl>
 
 			<h3>Functions</h3>
-				<dl>
-					<dt class="code">.load(<i>filename/nwkstring</i>,<i>[tree_name]</i>,<i>[format]</i>)</dt>
-						<dd>
-							<p>Parse a newick or nexus format string and draw the tree</p></p>
-							<h4>Arguments</h4>
-							<dl>
-								<dt>filename (String)</dt>
-								<dd>the name of the file you wish to open via AJAX or the NWK or Nexus String</dd>
+			<dl>
+				<dt class="code">AJAX(url, method, params, callback, callbackPars, scope, errorCallback)</dt>
+					<dd>Make an AJAX call and pass the data returned to the callback. Used in the load method</dd>
 
-								<dt>tree_name (String)</dt>
-								<dd>If using nexus format, the name of the tree to draw. But default Phylocanvas picks the first tree</dd>
+				<dt class="code">branchRenderers (collection : function(Tree, Branch, collapsed))</dt>
+					<dd>Functions that enable the drawing of different tree structures. Default
+					branchRenderers are radial, rectangular, circular, diagonal, hierarchy </dd>
 
-								<dt>format (nexus|newick)</dt>
-								<dd>override the parsing algorithm for the string provided</dd>
-							</dl>
-						</dd>
-					<dt class="code">.displayLabels()</dt>
-						<dd>
-							<p>Show the lables on the tree</p>
-						</dd>
+				<dt class="code">load(<i>filename/nwkstring</i>,<i>[tree_name]</i>,<i>[format]</i>)</dt>
+					<dd>
+						<p>Parse a newick or nexus format string and draw the tree</p></p>
+						<h4>Arguments</h4>
+						<dl>
+							<dt>filename (String)</dt>
+							<dd>the name of the file you wish to open via AJAX or the NWK or Nexus String</dd>
 
-					<dt class="code">.hideLabels()</dt>
-						<dd>
-							<p>Hide the lables on the tree</p>
+							<dt>tree_name (String)</dt>
+							<dd>If using nexus format, the name of the tree to draw. But default Phylocanvas picks the first tree</dd>
 
-						</dd>
+							<dt>format (nexus|newick)</dt>
+							<dd>override the parsing algorithm for the string provided</dd>
+						</dl>
+					</dd>
 
-					<dt class="code">.setTreeType(<i>type</i>)</dt>
-						<dd>
-							<p>Hide the lables on the tree</p>
-							<h4>Arguments</h4>
-							<dl>
-								<dt>type (String)</dt>
-								<dd>
-									<p>the name of the type of tree to change to (rectangular, radial, circular, diagonal, hierarchy)</p>
-								</dd>
-							</dl>
-						</dd>
+				<dt class="code">clicked(event)</dt>
+				<dt class="code">dblclicked(even)</dt>
+				<dt class="code">drag(even)</dt>
+					<dd>
+						Event handlers for mouse events on the canvas
+					</dd>
+
+
+				<dt class="code">displayLabels()</dt>
+					<dd>
+						<p>Show the lables on the tree</p>
+					</dd>
+
+				<dt class="code">draw(forcRedraw)</dt>
+					<dd>
+						draw the tree with the settings provided, forceRedraw causes
+						the prerenderer to redraw
+					</dd>
+
+				<dt class="code">hideLabels()</dt>
+					<dd>
+						<p>Hide the lables on the tree</p>
+
+					</dd>
+
+				<dt class="code">setTreeType(<i>type</i>)</dt>
+					<dd>
+						<p>Hide the lables on the tree</p>
+						<h4>Arguments</h4>
+						<dl>
+							<dt>type (String)</dt>
+							<dd>
+								<p>the name of the type of tree to change to (rectangular, radial, circular, diagonal, hierarchy)</p>
+							</dd>
+						</dl>
+					</dd>
 			</dl>
 
 			<a name="tree-events"><h3>Events</h3></a>
