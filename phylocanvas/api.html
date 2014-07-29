@@ -538,8 +538,97 @@
 
 
 				<h3>Functions</h3>
+					<dt>addChild(<i>node</i>)</dt>
+						<dd>Add a child branch to this branch</dd>
+
+					<dt>clicked(<i>x</i>, <i>y</i>)</dt>
+						<dd>see if this branch is the one that has been clicked given the x
+						and y coordinates (output from Tree.translateClickX/Y)</dd>
+
+					<dt>collapse</dt>
+						<dd>Collapse this branch</dd>
+
+					<dt>drawLabel()</dt>
+						<dd>Draw the label for this branch</dd>
+
+					<dt>drawNode()</dt>
+						<dd>draw the coloured tip of this branch</dd>
+
+					<dt>expand()</dt>
+						<dd>Expand (uncollapse) the node</dd>
+
+					<dt>getColour()</dt>
+						<dd>Get the tip or branch colour of this node depeneding on whether its
+						a leaf or an internal node</dd>
+
+					<dt>getChildColours()</dt>
+						<dd>return an array of the colours of this childs children</dd>
+
+					<dt>getChildCount()</dt>
+						<dd>get the <b>total</b> number of children under this node and all
+						of it's children.</dd>
+
+					<dt>getChildIds()</dt>
+						<dd>Return the IDs of all the leaves under this branch (recursively)</dd>
+
+					<dt>getChildNo()</dt>
+						<dd>Get the position of this node in it's parents children
+						array</dd>
+
+					<dt>getChildYTotal()</dt>
+						<dd>Return the total distance on the Y axis occupied by this nodes children</dd>
+
+					<dt>getLabel()</dt>
+						<dd>return the text that labels this node, if no label is
+						set return the node id</dd>
+
+					<dt>getLabelSize()</dt>
+						<dd>Return the width of this node's label</dd>
+
+					<dt>getNodeSize()</dt>
+						<dd>Get the size of the tip of the node</dd>
+
+					<dt>getNWK()</dt>
+						<dd>Return the nwk format string of this node</dd>
+
+					<dt>getTextColour()</dt>
+						<dd>Get the colour of the label</dd>
+
+					<dt>parseNwk(nwk_string, idx)</dt>
+						<dd>recursive parsing function for a nwk file</dd>
+
+					<dt>parseLabel(nwk_string, idx)</dt>
+						<dd>parse a label from a nwk string</dd>
+
+					<dt>parseNodeLength(nwk_string, idx)</dt>
+						<dd>Parse the node length from a nwk string</dd>
+
+					<dt>redrawTreeFromBranch()</dt>
+						<dd>Draw a subtree from this branch</dd>
+
+					<dt>reset()</dt>
+						<dd>set all the branches positional properties back to 0 ready for the
+						next branch layout</dd>
+
 					<dt>rotate()</dt>
 						<dd>Reverse the order of the nodes immediate children. The reverse function is available in the right-click menu</dd>
+
+					<dt>saveChildren()</dt>
+						<dd>save this nodes children to the tree</dd>
+
+					<dt>setHighlighted(highlighted)</dt>
+						<dd>Sets whether or not this branch is highlighted (true or false)</dd>
+
+					<dt>setSelected(<i>selected</i>, <i>applyToChildren</i>)</dt>
+						<dd>Set whether the node is selected (true or false) and whether
+						this should be applied to all it's children.</dd>
+
+
+					<dt>setTotalBranchLength()</dt>
+						<dd>calculate the total branch length property for this node</dd>
+
+					<dt>toggleCollapse()</dt>
+						<dd>Toggle this node between collapsed and expanded</dd>
 
 			</section>
 		</div>
