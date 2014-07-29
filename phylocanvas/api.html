@@ -166,15 +166,87 @@
 				<dt class="code">AJAX(url, method, params, callback, callbackPars, scope, errorCallback)</dt>
 					<dd>Make an AJAX call and pass the data returned to the callback. Used in the load method</dd>
 
+				<dt>addListener(<i>event_name</i>, <i>listener</i>)</dt>
+				<dt>on(<i>event_name</i>, <i>listener</i>)</dt>
+					<dd>attach a listener to an event from the tree</dd>
+
+				<dt class="code">adjustForPixelRatio()</dt>
+					<dd>
+						compensate for Retina display/browser zoom
+					</dd>
+
 				<dt class="code">branchRenderers (collection : function(Tree, Branch, collapsed))</dt>
 					<dd>Functions that enable the drawing of different tree structures. Default
 					branchRenderers are radial, rectangular, circular, diagonal, hierarchy </dd>
 
+				<dt>buildLeaves()</dt>
+					<dd>Reconstruct the leaves array in the correct order after
+						a rotation</dd>
+
+				<dt class="code">clicked(event)</dt>
+				<dt class="code">dblclicked(event)</dt>
+				<dt class="code">drag(event)</dt>
+				<dt class="code">drop()</dt>
+				<dt class="code">pickup()</dt>
+				<dt class="code">scroll(event)</dt>
+					<dd>
+						Event handlers for mouse events on the canvas
+					</dd>
+
+
+				<dt class="code">displayLabels()</dt>
+					<dd>
+						Show the lables on the tree
+					</dd>
+
+				<dt class="code">draw(<i>forceRedraw</i>)</dt>
+					<dd>
+						draw the tree with the settings provided, forceRedraw causes
+						the prerenderer to redraw.
+					</dd>
+
+				<dt>exportNwk</dt>
+					<dd>
+						Return the newick string of the currently displayed tree
+					</dd>
+
+				<dt class="code">findBranch(<i>pattern</i>)</dt>
+					<dd>
+						File a branch accoring to the pattern provided (is matched
+						against the id using new RegExp(pattern 'i'))
+					</dd>
+
+				<dt class="code">fitInPanel()</dt>
+					<dd>
+						fit the tree within the current canvas panel
+					</dd>
+
+
+				<dt class="code">genId()</dt>
+					<dd>
+						Generate a node Id prefixed with 'pcn'
+					</dd>
+
+				<dt class="code">getBounds()</dt>
+					<dd>
+						get the overall size of the tree
+					</dd>
+
+
+				<dt>getPngUrl()</dt>
+					<dd>
+						Get the dataURL for the current view
+					</dd>
+
+				<dt class="code">hideLabels()</dt>
+					<dd>
+						Hide the lables on the tree
+					</dd>
+
 				<dt class="code">load(<i>filename/nwkstring</i>,<i>[tree_name]</i>,<i>[format]</i>)</dt>
 					<dd>
 						<p>Parse a newick or nexus format string and draw the tree</p></p>
-						<h4>Arguments</h4>
-						<dl>
+						<dl class="arguments">
 							<dt>filename (String)</dt>
 							<dd>the name of the file you wish to open via AJAX or the NWK or Nexus String</dd>
 
@@ -186,42 +258,129 @@
 						</dl>
 					</dd>
 
-				<dt class="code">clicked(event)</dt>
-				<dt class="code">dblclicked(even)</dt>
-				<dt class="code">drag(even)</dt>
+				<dt>loadCompleted()</dt>
+					<dd>Fire the event that signals the load is completed</dd>
+
+				<dt>loadError(<i>message</i>)</dt>
+					<dd>Fire the event that signals the load has failed</dd>
+
+				<dt>loadStarted()</dt>
+					<dd>Fire the event that signals the load has started</dd>
+
+				<dt>nodeRenderers (Collection : fuction(tree, node))</dt>
+					<dd> Render the tip of a leaf. Extensible colletion that includes
+						circle, square, triangle and start by default. Rotation and offset of
+						the canvas are set so that 0,0 is the tip of the branch.</dd>
+
+				<dt>nodeSelected(nids)</dt>
+					<dd>Fire the event that signals nodes have been selected</dd>
+
+				<dt>parseNexus(<i>nexus_string</i>,<i>name</i>)</dt>
+				<dt>parseNwk(<i>nwk_string</i>)</dt>
+					<dd>Parse a Nexus or nwk formatted string. If using Nexus
+					the tree name should be specified, normally these methods are
+					invoked from within the load function</dd>
+
+				<dt class="code">prerenderers (collection : function(Tree, forcedDraw))</dt>
+					<dd>Functions calculate the structure of the tree before drawing. Default
+					pre-renderers are radial, rectangular, circular, diagonal, hierarchy.
+					<i>forcedDraw is deprecated and has no effect</i> </dd>
+
+				<dt>redrawFromBranch(<i>node</i>, <i>leafIds</i>)</dt>
 					<dd>
-						Event handlers for mouse events on the canvas
+						recursively get the IDs of the leaves in a sub-tree, putting the results
+						in leafIds
 					</dd>
 
-
-				<dt class="code">displayLabels()</dt>
+				<dt>redrawFromBranch(<i>node</i>)</dt>
 					<dd>
-						<p>Show the lables on the tree</p>
+						Redraw a sub-tree from an internal node of a tree.
 					</dd>
 
-				<dt class="code">draw(forcRedraw)</dt>
+				<dt>redrawOriginalTree()</dt>
 					<dd>
-						draw the tree with the settings provided, forceRedraw causes
-						the prerenderer to redraw
+						redraw the tree from it's original root
 					</dd>
 
-				<dt class="code">hideLabels()</dt>
+				<dt>resetTree()</dt>
 					<dd>
-						<p>Hide the lables on the tree</p>
-
+						Reset the tree ready for the pre-renderers to recalculate
 					</dd>
+
+				<dt>resizeToContainer()</dt>
+					<dd>Fit the whole widget within it's parent div</dd>
+
+
+				<dt>rotateBranch(<i>branch</i>)</dt>
+					<dd>
+						Reverse the order a branch's children are drawn in
+					</dd>
+
+				<dt>saveNode(<i>node</i>)</dt>
+					<dd>
+						Add a node to the tree. Used by the parsers.
+					</dd>
+
+				<dt>selectNodes(<i>nodeIds</i>)</dt>
+					<dd>Select the nodes specified by node ids (array or comma seperated list).
+						<b>N.B.</b> all leaves must be adjacent in the tree</dd>
+
+				<dt>setFont(<i>font</i>)</dt>
+					<dd>Change the font for the node labels</dd>
+
+				<dt>setNodeColourAndShape(<i>nodeIds</i>, <i>[colour]</i>, <i>[shape]</i>, <i>[size]</i>, <i>[waiting]</i>)</dt>
+					<dd>Change the node colour and/or shape, optional arguments must be replaced
+					by null or undefined if subsequent arguments are set
+						<dl class="arguments">
+							<dt>nodeIds : string or array</dt>
+								<dd>the nodes to change</dd>
+							<dt>colour : rgba value</dt>
+								<dd>the colour to set the nodes too</dd>
+							<dt>shape : string</dt>
+								<dd>The name of the nodeRenderer</dd>
+							<dt>size : int</dt>
+								<dd>The node size</dd>
+							<dt>waiting : boolean</dt>
+								<dd>deprecated</dd>
+						</dl>
+					</dd>
+
+				<dt>setNodeSize(<i>size</i>)</dt>
+					<dd>Set the base size of all the nodes</dd>
+
+				<dt>setRoot(<i>node</i>)</dt>
+					<dd>Set the root node of the tree</dd>
+
+				<dt>setTextSize(<i>size</i>)</dt>
+					<dd>Set the size of the labels</dd>
 
 				<dt class="code">setTreeType(<i>type</i>)</dt>
 					<dd>
 						<p>Hide the lables on the tree</p>
-						<h4>Arguments</h4>
-						<dl>
+						<dl class="arguments">
 							<dt>type (String)</dt>
 							<dd>
 								<p>the name of the type of tree to change to (rectangular, radial, circular, diagonal, hierarchy)</p>
 							</dd>
 						</dl>
 					</dd>
+
+				<dt>setSize(<i>width</i>, <i>height</i>)</dt>
+					<dd>Set the size of the tree</dd>
+
+				<dt>setZoom(<i>zoom_level</i>)</dt>
+					<dd>Set the zoom level of the tree</dd>
+
+				<dt>toggleLabels()</dt>
+					<dd>Toggle the labels on and off</dd>
+
+				<dt>translateClickX(click_x)</dt>
+				<dt>translateClickY(click_y)</dt>
+					<dd>Take the postion of the click from the browser event
+						and turn it into a position relative to the tree</dd>
+
+				<dt>treeTypeChanged(<i>old_type</i>,<i>new_type</i>)</dt>
+					<dd>Fire the event that signals the tree type has been changed</dd>
 			</dl>
 
 			<a name="tree-events"><h3>Events</h3></a>
@@ -265,7 +424,6 @@
 				<dt>typechanged</dt>
 					<dd>
 						Fires when the tree type is changed
-						<h4>Properties</h4>
 						<dl>
 							<dt>oldType</dt>
 								<dd>The name of the type of tree that was being displayed before the type was changed</dd>
