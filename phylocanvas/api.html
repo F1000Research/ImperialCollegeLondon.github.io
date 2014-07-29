@@ -452,30 +452,89 @@
 				<h2>PhyloCanvas.Branch</h2>
 
 				<h3>Properties</h3>
+					<dt>angle</dt>
+						<dd>
+							The angle (clockwise from horizontal) of the node branch
+						</dd>
 					<dt>branchLength</dt>
 						<dd>
 							The relative length of the branch as defined in the nwk/nexus string
+						</dd>
+					<dt>canvas</dt>
+						<dd>
+							A reference to the canvas on which the branch is drawn
 						</dd>
 					<dt>centrex/centrey</dt>
 						<dd>
 							The position of the end of the node.
 						</dd>
+					<dt>children</dt>
+						<dd>
+							The child branches of this branch
+						</dd>
+
+					<dt>collapsed</dt>
+						<dd>
+							Has the branch been collapsed
+						</dd>
+
+					<dt>colour</dt>
+						<dd>
+							The fill colour of the node tip
+						</dd>
+
+					<dt>data</dt>
+						<dd>
+							a custom object that can be used in conjustion with a
+							custom noderenderer
+						</dd>
+
+
 					<dt>id</dt>
 						<dd>
 							The unique identifier for a node, particulary for identifying leaf nodes, this becomes the
 							key to <i>Tree.branches</i>
 						</dd>
+
+					<dt>interx/interx</dt>
+						<dd>
+							Used by layouts that align all the nodes at the same distance
+							from the root, but needing to show branch lengths (e.g. circular layout);
+						</dd>
+
 					<dt>label</dt>
 						<dd>
 							The label shown next to the node. Blank strings will be displayed, if the label is null (default)
 							or undefined the ID is displayed instead
 						</dd>
-					<dt>startx/starty</dt>
+
+					<dt>leaf</dt>
+						<dd>
+							True if the branch has no children and is therefore
+							a leaf
+						</dd>
+
+					<dt>maxChildAngle</dt>
+					<dt>minChildAngle</dt>
+						<dd>
+							The maxim
+						</dd>
+
+					<dt>startx</dt>
+					<dt>starty</dt>
 						<dd>
 							The position of the start of the branch (the parent nodes centrex/centrey)
 						</dd>
 
+					<dt>totalBranchLength</dt>
+						<dd>
+							The total distance from the root of the tree to the tip of the branch
+						</dd>
 
+					<dt>tree</dt>
+						<dd>
+							A reference to the tree object that this branch belongs too
+						</dd>
 
 
 				<h3>Functions</h3>
