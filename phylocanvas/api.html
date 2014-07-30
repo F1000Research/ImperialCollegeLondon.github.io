@@ -545,7 +545,7 @@
 						<dd>see if this branch is the one that has been clicked given the x
 						and y coordinates (output from Tree.translateClickX/Y)</dd>
 
-					<dt>collapse</dt>
+					<dt>collapse()</dt>
 						<dd>Collapse this branch</dd>
 
 					<dt>drawLabel()</dt>
@@ -631,6 +631,101 @@
 						<dd>Toggle this node between collapsed and expanded</dd>
 
 			</section>
+
+			<section>
+				<h2>PhyloCanvas.History</h2>
+				<p>The history panel of sub-trees
+				<h3>Properties</h3>
+				<dl>
+					<dt>tree</dt>
+						<dd>reference to the tree object</dd>
+
+					<dt>div</dt>
+						<dd>the dive containing the history</dd>
+				</dl>
+
+				<h3>Functions</h3>
+				<dl>
+					<dt>reset()</dt>
+						<dd>Clear all the snapshots and then add the root snapshot</dd>
+
+					<dt>collapse()</dt>
+						<dd>Collapse the histroy panel into the left of the PhyloCanvas
+							div</dd>
+
+					<dt>expand()</dt>
+						<dd>Show the History</dd>
+
+					<dt>isCollapsed()</dt>
+						<dd>return true if the history is collapsed and false if it isn't</dd>
+
+					<dt>toggle()</dt>
+						<dd>If the history is collapsed exapand it and vice-versa</dd>
+
+					<dt>createDiv(parentDiv)</dt>
+						<dd>Crete the div that will contain the history</dd>
+
+					<dt>resizeTree()</dt>
+						<dd>Adjust the size of the tree to compensate for the History being
+						collapsed or expanded</dd>
+
+					<dt>addSnapshot(id)</dt>
+						<dd>Add a snapshot of the current tree view that will redraw the
+							tree from the node with the ID id.</dd>
+
+					<dt>clear()</dt>
+						<dd>Remove all the snapshots</dd>
+
+					<dt>goBackTo(event)</dt>
+						<dd>Click handler for the snapshots that removes the subsequent
+						history entries.</dd>
+				</dl>
+			</section>
+
+			<section>
+				<h2>PhyloCanvas.History</h2>
+				<p>The history panel of sub-trees
+				<h3>Properties</h3>
+				<dl>
+					<dt>tree</dt>
+						<dd>reference to the tree object</dd>
+
+					<dt>div</dt>
+						<dd>the dive containing the history</dd>
+
+					<dt>elements</dt>
+						<dd>Menu choices, an array of dictionaries with properties
+							<dl class="arguments">
+								<dt>text</dt>
+									<dd>The label of the menu item</dd>
+
+								<dt>handler</dt>
+									<dd>The function in the Tree object that the menu item invokes. If
+									a node has been clicked on it is padded to the handler</dd>
+
+								<dt>internal</dt>
+									<dd>Does this function apply to an internal node</dd>
+
+								<dt>leaf</dt>
+									<dd>Does this function apply to a leaf</dd>
+							</dl>
+						</dd>
+				</dl>
+
+				<h3>Functions</h3>
+				<dl>
+					<dt>close()</dt>
+						<dd>close the context menu</dd>
+
+					<dt>mouseover</dt>
+					<dt>mouseout</dt>
+						<dd>hover functions</dd>
+
+					<dt>open(x,y)</dt>
+						<dd>Open the menu at position x,y</dd>
+				</dl>
+			</section>
+			<hr />
 		</div>
 	</body>
 </html>
