@@ -42,6 +42,7 @@
 				<dt>/<i>&lt;project name&gt;</i>/<i>&lt;form name&gt;</i></dt>
 					<dd>
 						<p><b>Default</b>: show the form's datatable</p>
+						<p>Also accepts post requests where the forms fields are the URL-encoded paramaters</p>
 						<h3>File Extensions</h2>
 							<p>Use these file extensions to modify the behaviour of the endpoint</p>
 							<dl>
@@ -74,8 +75,9 @@
 									<dd>Filter the results to only show records that match this field/value combination</dd>
 							</dl>
 					</dd>
+
 				<dt>/<i>&lt;project name&gt;</i>/upload</dt>
-					<dd>Upload a record to the server
+					<dd><p>Upload a record to the server, returns <b>1</b> for success and <b>0</b> for a failure, or an error message prefixed by <b>Message:</b></p>
 
 					<h3>Paramaters</h3>
 						<dl>
@@ -107,13 +109,7 @@
 
 			</dl>
 		</section>
-
-
-
-		<section>
-			Upload from server
-		</section>
-
+		
 		<footer>
 				&copy; Imperial College London 2014
 		</footer>
