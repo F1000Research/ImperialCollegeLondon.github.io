@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="EpiCollectBackup">
+	<head>
+		<title>EpiCollect+ Backup Converter</title>
+		<link rel="stylesheet" href="/css/main.css" type="text/css" />
+		<link rel="stylesheet" href="/css/epicollect.css" type="text/css" />
+	</head>
+	<body>
+		<header class="">
+			<h1>EpiCollect+ Backup Converter</h1>
+		</header>
+
+		<div class="content-main" ng-controller="FileHandler">
+			<h2>Backup Files</h2>
+			<div class="files">
+				<div dropzone></div>
+			</div>
+
+			<p class="lead">Drag and drop backup files into the box above. The Script on this page will then convert the data into CSV and make the
+			files available for download. </p>
+
+			<p class="alert alert-warning">This page is intended as a stop-gap and requires a current version of Firefox, Chrome or Internet Explorer 10+</p>
+
+			<h2>Data from files</h2>
+
+			<div class="statistics row">
+				<table>
+					<thead>
+						<tr>
+							<th>Table</th><th>Number of Entries</th><th>Download data</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="(table, rows) in records">
+							<td ng-bind="table"></td><td ng-bind="rows.length"></td><td><a ng-href="data:text/csv,{{ getCSV(table) }}" download="{{table}}.csv">Download CSV Data</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<script src="/bower_components/angular/angular.js"></script>
+		<script src="/js/epicollect_backup.js"></script>
+	</body>
+</html>
